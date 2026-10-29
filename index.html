@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diksha, Meri Jaan ❤️</title>
+<style>
+:root{--pink:#ff5f91;--rose:#b62d64;--cream:#fff6f8;--ink:#442238}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--cream);background:#210d22}
+.app{min-height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,#241126ee,#5b1c43d9),url('media/diksha-1.jpeg') center/cover fixed}
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#1d0b20a8;backdrop-filter:blur(10px);position:sticky;top:0;z-index:4}
+.brand{font-weight:800;letter-spacing:.3px}.brand span{color:#ff8eb3}
+.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.btn{border:0;border-radius:999px;padding:10px 15px;background:#ffffff20;color:white;font-weight:700;cursor:pointer}.nav button.active,.btn{background:linear-gradient(135deg,#ff699b,#c72e70);box-shadow:0 8px 24px #ff5f9140}
+main{max-width:960px;margin:auto;padding:28px 18px 90px}.page{display:none;min-height:70vh;animation:fade .3s ease}.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{min-height:68vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px}
+.glass{background:#210c22b8;border:1px solid #ffffff35;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 20px 60px #10000b66;backdrop-filter:blur(8px);max-width:720px;width:100%}
+h1{font-size:clamp(2.3rem,8vw,5rem);line-height:1.02;margin:10px 0 18px;color:#ffd3e1;font-family:Georgia,serif}h2{color:#ffd3e1;font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,2.7rem)}p{font-size:1.08rem;line-height:1.75}.sub{color:#ffd6e3}.heart{font-size:2.5rem;animation:pulse 1.3s infinite}@keyframes pulse{50%{transform:scale(1.15)}}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.photo{border:1px solid #ffffff55;border-radius:22px;overflow:hidden;background:#ffffff14;box-shadow:0 10px 35px #0005;cursor:pointer}.photo img{width:100%;height:330px;object-fit:cover;display:block;transition:transform .3s}.photo:hover img{transform:scale(1.035)}.caption{padding:12px;text-align:center}
+.quiz-card{max-width:650px;margin:20px auto;text-align:center}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.answers button{border:1px solid #ffffff50;background:#ffffff18;color:white;border-radius:15px;padding:14px 10px;font-size:1rem;cursor:pointer}.answers button:hover{background:#ff5f9166}.progress{height:7px;background:#ffffff25;border-radius:9px;overflow:hidden}.progress div{height:100%;background:#ff7fa9;width:0;transition:width .3s}
+.message{white-space:pre-line;font-size:1.12rem}.footer{text-align:center;color:#ffd6e3;padding:20px 10px;font-size:.9rem}
+.modal{display:none;position:fixed;inset:0;background:#10000ded;z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal img{max-width:95vw;max-height:88vh;border-radius:14px}.modal button{position:absolute;top:15px;right:18px;font-size:1.8rem;background:none;color:white;border:0;cursor:pointer}
+@media(max-width:600px){.top{align-items:flex-start;gap:12px;flex-direction:column}.nav{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.nav button{padding:9px 5px;font-size:.82rem}.photo img{height:300px}.answers{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="app">
+<header class="top"><div class="brand">💗 For <span>Diksha</span>, Meri Jaan</div><nav class="nav" aria-label="Pages">
+<button class="active" data-page="home">Home</button><button data-page="story">My Message</button><button data-page="photos">Her Photos</button><button data-page="game">Love Quiz 💘</button><button data-page="karwa">Karwa Chauth</button>
+</nav></header>
+<main>
+<section id="home" class="page active hero"><div class="glass"><div class="heart">❤️</div><p class="sub">A little world made just for you</p><h1>Diksha,<br> Meri Jaan</h1><p>Every love story is special, but my favourite one is the story where I get to care for you, laugh with you, and make beautiful memories with you.</p><p><b>With all my love, Mohit 💌</b></p><button class="btn" onclick="showPage('game')">Play our Love Quiz →</button></div></section>
+<section id="story" class="page"><div class="glass"><h2>To my Meri Jaan 💗</h2><p class="message">Diksha, you bring a special kind of happiness into my life. Your smile can make an ordinary day feel beautiful, and even the smallest moments become memories I want to keep.</p><p class="message">I made this little website just for you — so whenever you open it, you can remember that someone is thinking of you with a full heart.</p><p class="message">No matter how busy life gets, I hope we always make time for kindness, laughter, honest conversations, and each other.</p><p style="text-align:right"><b>Forever sending love, Mohit ❤️</b></p></div></section>
+<section id="photos" class="page"><div class="glass" style="max-width:none"><h2>My favourite smiles 📸</h2><p class="sub">Tap any photo to open it full screen.</p><div class="photo-grid">
+<div class="photo" onclick="openPhoto('media/diksha-1.jpeg')"><img src="media/diksha-1.jpeg" alt="Diksha photo one"><div class="caption">Your cute smile 💕</div></div>
+<div class="photo" onclick="openPhoto('media/diksha-2.jpeg')"><img src="media/diksha-2.jpeg" alt="Diksha photo two"><div class="caption">Beautiful, always 🌷</div></div>
+<div class="photo" onclick="openPhoto('media/diksha-3.jpeg')"><img src="media/diksha-3.jpeg" alt="Diksha photo three"><div class="caption">My Meri Jaan 💖</div></div>
+</div></div></section>
+<section id="game" class="page"><div class="glass quiz-card"><div class="heart">💘</div><h2>Our Little Love Quiz</h2><p class="sub">A few sweet questions just for you, Diksha!</p><div class="progress"><div id="bar"></div></div><p id="counter">Question 1 of 5</p><h3 id="question">What nickname does Mohit call you?</h3><div id="answers" class="answers"></div><p id="feedback" aria-live="polite"></p><button id="next" class="btn" style="display:none" onclick="nextQuestion()">Next question →</button><button id="restart" class="btn" style="display:none" onclick="restartQuiz()">Play again ❤️</button></div></section>
+<section id="karwa" class="page hero"><div class="glass"><div class="heart">🌙❤️</div><h1>Happy Karwa Chauth</h1><p>Diksha, Meri Jaan — may your life be filled with love, peace, smiles, and beautiful moments. This page is a small reminder that you are cherished.</p><p><b>With love, Mohit</b></p><button class="btn" onclick="showPage('photos')">See your photos →</button></div></section>
+</main><div class="footer">Made with love for Diksha · Mohit ❤️</div></div>
+<div class="modal" id="modal" onclick="closePhoto()"><button aria-label="Close photo">×</button><img id="largePhoto" alt="Diksha full size photo"></div>
+<script>
+const pages=['home','story','photos','game','karwa'];
+function showPage(id){pages.forEach(p=>document.getElementById(p).classList.toggle('active',p===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function openPhoto(src){document.getElementById('largePhoto').src=src;document.getElementById('modal').classList.add('show')}
+function closePhoto(){document.getElementById('modal').classList.remove('show')}
+const qs=[
+{q:"What sweet nickname does Mohit call you?",a:["Meri Jaan ❤️","Captain Cool","Professor","Boss Lady"],correct:0,why:"Of course — you are Mohit's Meri Jaan! 💗"},
+{q:"What makes a relationship feel strongest?",a:["Honesty and care","Never talking","Always being right","Keeping secrets"],correct:0,why:"Love grows with honesty, care, and listening. 💞"},
+{q:"What is the best kind of surprise?",a:["A thoughtful message","Ignoring each other","A forgotten birthday","No time together"],correct:0,why:"Little thoughtful moments can mean so much. 💌"},
+{q:"If we have a difficult day, what should we do?",a:["Talk kindly and listen","Stop communicating","Blame each other","Pretend nothing matters"],correct:0,why:"We can face things better as a team. 🤝❤️"},
+{q:"What does Mohit want you to remember?",a:["You are special to me","You must be perfect","You never make mistakes","You should guess"],correct:0,why:"You are special just as you are, Diksha. Love, Mohit ❤️"}
+];
+let qi=0,score=0,answered=false;
+function renderQ(){let q=qs[qi];document.getElementById('question').textContent=q.q;document.getElementById('counter').textContent=`Question ${qi+1} of ${qs.length}`;document.getElementById('bar').style.width=(qi/qs.length*100)+'%';document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('restart').style.display='none';answered=false;let box=document.getElementById('answers');box.innerHTML='';q.a.forEach((a,i)=>{let b=document.createElement('button');b.textContent=a;b.onclick=()=>answer(i);box.appendChild(b)})}
+function answer(i){if(answered)return;answered=true;let q=qs[qi];if(i===q.correct)score++;document.querySelectorAll('#answers button').forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.style.background='#c13e76'});document.getElementById('feedback').textContent=(i===q.correct?'Correct! 💖 ':'A sweet thought: ')+q.why;document.getElementById('bar').style.width=((qi+1)/qs.length*100)+'%';if(qi<qs.length-1)document.getElementById('next').style.display='inline-block';else{document.getElementById('question').textContent='You finished our love quiz! 💗';document.getElementById('counter').textContent=`You got ${score} of ${qs.length} sweet answers`;document.getElementById('restart').style.display='inline-block';document.getElementById('next').style.display='none'}}
+function nextQuestion(){if(qi<qs.length-1){qi++;renderQ()}}
+function restartQuiz(){qi=0;score=0;renderQ()}
+renderQ();
+if(location.hash&&pages.includes(location.hash.slice(1)))showPage(location.hash.slice(1));
+</script></body></html>
