@@ -1,61 +1,891 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diksha, Meri Jaan ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d24">
+<title>Diksha ❤️ My Jaan | Love App</title>
+
 <style>
-:root{--pink:#ff5f91;--rose:#b62d64;--cream:#fff6f8;--ink:#442238}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--cream);background:#210d22}
-.app{min-height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,#241126ee,#5b1c43d9),url('media/diksha-1.jpeg') center/cover fixed}
-.top{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#1d0b20a8;backdrop-filter:blur(10px);position:sticky;top:0;z-index:4}
-.brand{font-weight:800;letter-spacing:.3px}.brand span{color:#ff8eb3}
-.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.btn{border:0;border-radius:999px;padding:10px 15px;background:#ffffff20;color:white;font-weight:700;cursor:pointer}.nav button.active,.btn{background:linear-gradient(135deg,#ff699b,#c72e70);box-shadow:0 8px 24px #ff5f9140}
-main{max-width:960px;margin:auto;padding:28px 18px 90px}.page{display:none;min-height:70vh;animation:fade .3s ease}.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.hero{min-height:68vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px}
-.glass{background:#210c22b8;border:1px solid #ffffff35;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 20px 60px #10000b66;backdrop-filter:blur(8px);max-width:720px;width:100%}
-h1{font-size:clamp(2.3rem,8vw,5rem);line-height:1.02;margin:10px 0 18px;color:#ffd3e1;font-family:Georgia,serif}h2{color:#ffd3e1;font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,2.7rem)}p{font-size:1.08rem;line-height:1.75}.sub{color:#ffd6e3}.heart{font-size:2.5rem;animation:pulse 1.3s infinite}@keyframes pulse{50%{transform:scale(1.15)}}
-.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.photo{border:1px solid #ffffff55;border-radius:22px;overflow:hidden;background:#ffffff14;box-shadow:0 10px 35px #0005;cursor:pointer}.photo img{width:100%;height:330px;object-fit:cover;display:block;transition:transform .3s}.photo:hover img{transform:scale(1.035)}.caption{padding:12px;text-align:center}
-.quiz-card{max-width:650px;margin:20px auto;text-align:center}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.answers button{border:1px solid #ffffff50;background:#ffffff18;color:white;border-radius:15px;padding:14px 10px;font-size:1rem;cursor:pointer}.answers button:hover{background:#ff5f9166}.progress{height:7px;background:#ffffff25;border-radius:9px;overflow:hidden}.progress div{height:100%;background:#ff7fa9;width:0;transition:width .3s}
-.message{white-space:pre-line;font-size:1.12rem}.footer{text-align:center;color:#ffd6e3;padding:20px 10px;font-size:.9rem}
-.modal{display:none;position:fixed;inset:0;background:#10000ded;z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal img{max-width:95vw;max-height:88vh;border-radius:14px}.modal button{position:absolute;top:15px;right:18px;font-size:1.8rem;background:none;color:white;border:0;cursor:pointer}
-@media(max-width:600px){.top{align-items:flex-start;gap:12px;flex-direction:column}.nav{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.nav button{padding:9px 5px;font-size:.82rem}.photo img{height:300px}.answers{grid-template-columns:1fr}}
+:root {
+  --pink: #ff6b9d;
+  --rose: #ff3f78;
+  --purple: #9b72cf;
+  --dark: #180d24;
+  --glass: rgba(25, 12, 34, .76);
+  --white: #fff7fb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--white);
+  background: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(24, 13, 36, .94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding: 14px 18px;
+}
+
+.topbar {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 800;
+  color: #ffb4d0;
+}
+
+.brand span {
+  color: white;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+
+.menu button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: white;
+  border-radius: 22px;
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+.menu button:hover,
+.menu button.active {
+  background: var(--pink);
+  color: #2a1020;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 16px 110px;
+}
+
+.page {
+  display: none;
+  position: relative;
+  min-height: 72vh;
+  overflow: hidden;
+  border-radius: 25px;
+  padding: clamp(22px, 5vw, 55px);
+  background: linear-gradient(
+    145deg,
+    rgba(34, 14, 43, .88),
+    rgba(79, 20, 63, .68)
+  );
+  border: 1px solid rgba(255,255,255,.17);
+  box-shadow: 0 20px 70px rgba(0,0,0,.3);
+  animation: appear .4s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--page-photo);
+  background-size: cover;
+  background-position: center;
+  opacity: .29;
+  z-index: 0;
+  transition: opacity .3s;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 8, 28, .88),
+    rgba(20, 8, 28, .47)
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-13px) rotate(5deg); }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+h1 {
+  font-size: clamp(35px, 7vw, 68px);
+  line-height: 1.12;
+  margin: 18px 0;
+}
+
+h2 {
+  font-size: clamp(27px, 4vw, 40px);
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.8;
+  margin: 12px 0;
+}
+
+.eyebrow {
+  color: #ffc2d8;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ffadc9, #fff0f7, #e0b8ff);
+  color: transparent;
+  background-clip: text;
+}
+
+.hero-copy {
+  max-width: 680px;
+  padding: 20px 0;
+}
+
+.hero-copy p {
+  font-size: 17px;
+  max-width: 580px;
+}
+
+.btn {
+  border: none;
+  border-radius: 28px;
+  padding: 13px 21px;
+  background: linear-gradient(135deg, #ff8bb5, #ff4c83);
+  color: #2a1020;
+  font-weight: 800;
+  margin: 8px 5px 8px 0;
+  box-shadow: 0 8px 25px rgba(255,76,131,.18);
+  transition: transform .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  color: white;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.24);
+}
+
+.heart {
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,.17);
+  border-radius: 20px;
+  padding: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 35px rgba(0,0,0,.14);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin-top: 23px;
+}
+
+.card {
+  background: rgba(31, 14, 41, .82);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.card .emoji {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.small {
+  font-size: 13px;
+  color: #f1d9e9;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.photo {
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #29152f;
+  padding: 0;
+  min-width: 0;
+}
+
+.photo img {
+  width: 100%;
+  height: 320px;
+  display: block;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+.photo:hover img {
+  transform: scale(1.04);
+}
+
+.photo-label {
+  display: block;
+  padding: 10px;
+  color: white;
+  background: rgba(30,10,40,.9);
+}
+
+.letter {
+  font-size: 17px;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+.quiz-question {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answer {
+  padding: 14px;
+  text-align: left;
+  color: white;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 14px;
+}
+
+.answer:hover {
+  background: rgba(255,107,157,.25);
+}
+
+.answer:disabled {
+  cursor: default;
+  opacity: .85;
+}
+
+.feedback {
+  min-height: 30px;
+  color: #ffc2d8;
+  margin: 12px 0;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.15);
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff8bb5, #d9b4ff);
+  transition: width .3s;
+}
+
+footer {
+  text-align: center;
+  color: #f5c9df;
+  font-size: 13px;
+  padding: 24px 10px;
+}
+
+.bottom-nav {
+  position: fixed;
+  z-index: 30;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 3px;
+  padding: 9px 5px calc(9px + env(safe-area-inset-bottom));
+  background: rgba(22,10,32,.97);
+  border-top: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(15px);
+}
+
+.bottom-nav button {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 2px;
+  border: none;
+  border-radius: 12px;
+  color: #f9dbea;
+  background: transparent;
+  font-size: 11px;
+}
+
+.bottom-nav button span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav button.active {
+  color: #ffb0ce;
+  background: rgba(255,107,157,.14);
+}
+
+#photoModal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.94);
+}
+
+#photoModal.open {
+  display: flex;
+}
+
+#photoModal img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  border: none;
+  background: #ff6b9d;
+  color: #210d1b;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 24px;
+}
+
+.heart-float {
+  position: fixed;
+  pointer-events: none;
+  z-index: 5;
+  bottom: -30px;
+  font-size: 20px;
+  opacity: .6;
+  animation: rise 9s linear forwards;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  header { padding: 12px; }
+  .topbar { flex-direction: column; }
+  .menu { display: none; }
+  main { padding: 12px 10px 100px; }
+  .page { min-height: 75vh; padding: 25px 18px; }
+  .grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .photo img { height: 230px; }
+  .letter { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
-<body><div class="app">
-<header class="top"><div class="brand">💗 For <span>Diksha</span>, Meri Jaan</div><nav class="nav" aria-label="Pages">
-<button class="active" data-page="home">Home</button><button data-page="story">My Message</button><button data-page="photos">Her Photos</button><button data-page="game">Love Quiz 💘</button><button data-page="karwa">Karwa Chauth</button>
-</nav></header>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">❤️ <span>Mohit & Diksha</span></div>
+
+    <nav class="menu" aria-label="Main navigation">
+      <button class="active" data-page="home">Home</button>
+      <button data-page="story">Our Story</button>
+      <button data-page="letter">Love Letter</button>
+      <button data-page="photos">Her Photos</button>
+      <button data-page="quiz">Love Quiz</button>
+      <button data-page="karwa">Karwa Chauth</button>
+    </nav>
+  </div>
+</header>
+
 <main>
-<section id="home" class="page active hero"><div class="glass"><div class="heart">❤️</div><p class="sub">A little world made just for you</p><h1>Diksha,<br> Meri Jaan</h1><p>Every love story is special, but my favourite one is the story where I get to care for you, laugh with you, and make beautiful memories with you.</p><p><b>With all my love, Mohit 💌</b></p><button class="btn" onclick="showPage('game')">Play our Love Quiz →</button></div></section>
-<section id="story" class="page"><div class="glass"><h2>To my Meri Jaan 💗</h2><p class="message">Diksha, you bring a special kind of happiness into my life. Your smile can make an ordinary day feel beautiful, and even the smallest moments become memories I want to keep.</p><p class="message">I made this little website just for you — so whenever you open it, you can remember that someone is thinking of you with a full heart.</p><p class="message">No matter how busy life gets, I hope we always make time for kindness, laughter, honest conversations, and each other.</p><p style="text-align:right"><b>Forever sending love, Mohit ❤️</b></p></div></section>
-<section id="photos" class="page"><div class="glass" style="max-width:none"><h2>My favourite smiles 📸</h2><p class="sub">Tap any photo to open it full screen.</p><div class="photo-grid">
-<div class="photo" onclick="openPhoto('media/diksha-1.jpeg')"><img src="media/diksha-1.jpeg" alt="Diksha photo one"><div class="caption">Your cute smile 💕</div></div>
-<div class="photo" onclick="openPhoto('media/diksha-2.jpeg')"><img src="media/diksha-2.jpeg" alt="Diksha photo two"><div class="caption">Beautiful, always 🌷</div></div>
-<div class="photo" onclick="openPhoto('media/diksha-3.jpeg')"><img src="media/diksha-3.jpeg" alt="Diksha photo three"><div class="caption">My Meri Jaan 💖</div></div>
-</div></div></section>
-<section id="game" class="page"><div class="glass quiz-card"><div class="heart">💘</div><h2>Our Little Love Quiz</h2><p class="sub">A few sweet questions just for you, Diksha!</p><div class="progress"><div id="bar"></div></div><p id="counter">Question 1 of 5</p><h3 id="question">What nickname does Mohit call you?</h3><div id="answers" class="answers"></div><p id="feedback" aria-live="polite"></p><button id="next" class="btn" style="display:none" onclick="nextQuestion()">Next question →</button><button id="restart" class="btn" style="display:none" onclick="restartQuiz()">Play again ❤️</button></div></section>
-<section id="karwa" class="page hero"><div class="glass"><div class="heart">🌙❤️</div><h1>Happy Karwa Chauth</h1><p>Diksha, Meri Jaan — may your life be filled with love, peace, smiles, and beautiful moments. This page is a small reminder that you are cherished.</p><p><b>With love, Mohit</b></p><button class="btn" onclick="showPage('photos')">See your photos →</button></div></section>
-</main><div class="footer">Made with love for Diksha · Mohit ❤️</div></div>
-<div class="modal" id="modal" onclick="closePhoto()"><button aria-label="Close photo">×</button><img id="largePhoto" alt="Diksha full size photo"></div>
+  <!-- HOME -->
+  <section id="home" class="page active"
+    style="--page-photo:url('media/diksha-1.jpeg')">
+    <div class="hero-copy">
+      <div class="eyebrow">A little world made for you</div>
+      <h1>For You,<br><span class="gradient-text">Meri Jaan Diksha</span> <span class="heart">❤️</span></h1>
+      <p>
+        Some people make life beautiful just by being in it.
+        You are that person for me, Diksha.
+        This little website is made with love, only for you.
+      </p>
+      <button class="btn" data-go="letter">Open My Love Letter 💌</button>
+      <button class="btn secondary" data-go="quiz">Play Our Love Quiz 💗</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="emoji">🌷</div>
+        <h3>My Favourite Person</h3>
+        <p>Out of all the people in the world, you are the one who makes my heart smile.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">💌</div>
+        <h3>A Secret for You</h3>
+        <p>Explore each page to find little messages, photos and a special game.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" class="page"
+    style="--page-photo:url('media/diksha-2.jpeg')">
+    <div class="eyebrow">Our little universe</div>
+    <h2>Our Story <span class="heart">💕</span></h2>
+    <div class="glass">
+      <p>
+        Diksha, every beautiful story is made of little moments.
+        The conversations, the smiles, the silly things that make us laugh
+        and the memories that stay in our hearts.
+      </p>
+      <p>
+        I may not always find the perfect words, but I want you to know
+        that you are special to me. I hope we keep creating memories,
+        supporting each other and finding reasons to smile together.
+      </p>
+      <p>
+        <strong>My favourite part of this story is that there is still
+        so much left for us to write.</strong> ❤️
+      </p>
+    </div>
+    <button class="btn" data-go="photos">See Your Photos 📸</button>
+  </section>
+
+  <!-- LETTER -->
+  <section id="letter" class="page"
+    style="--page-photo:url('media/diksha-3.jpeg')">
+    <div class="eyebrow">From Mohit, with love</div>
+    <h2>My Love Letter 💌</h2>
+    <div class="glass letter">Meri Jaan Diksha ❤️
+
+I made this little space just for you.
+
+I want you to remember that you are precious,
+your smile matters, and your happiness matters to me.
+
+Even on an ordinary day, you can make a moment feel special.
+I hope I can give you the same happiness, comfort and care
+that you bring into my life.
+
+I don't need every day to be perfect.
+I just hope we keep understanding each other,
+laughing together and making beautiful memories.
+
+Thank you for being you, Diksha.
+
+With lots of love,
+Mohit ❤️</div>
+    <button class="btn" id="surpriseButton">Tap for a Little Surprise 💝</button>
+    <p id="surpriseMessage" aria-live="polite"></p>
+  </section>
+
+  <!-- PHOTOS -->
+  <section id="photos" class="page"
+    style="--page-photo:url('media/diksha-1.jpeg')">
+    <div class="eyebrow">My favourite smile</div>
+    <h2>Your Photos, Meri Jaan 📸</h2>
+    <p>Tap any photo to open it in full screen. ❤️</p>
+
+    <div class="photo-grid">
+      <button class="photo" data-photo="media/diksha-1.jpeg"
+        aria-label="Open Diksha photo one">
+        <img src="media/diksha-1.jpeg" alt="Diksha photo one"
+          onerror="this.alt='Photo missing: media/diksha-1.jpeg'">
+        <span class="photo-label">My favourite smile 💗</span>
+      </button>
+
+      <button class="photo" data-photo="media/diksha-2.jpeg"
+        aria-label="Open Diksha photo two">
+        <img src="media/diksha-2.jpeg" alt="Diksha photo two"
+          onerror="this.alt='Photo missing: media/diksha-2.jpeg'">
+        <span class="photo-label">Beautiful you 🌸</span>
+      </button>
+
+      <button class="photo" data-photo="media/diksha-3.jpeg"
+        aria-label="Open Diksha photo three">
+        <img src="media/diksha-3.jpeg" alt="Diksha photo three"
+          onerror="this.alt='Photo missing: media/diksha-3.jpeg'">
+        <span class="photo-label">Always special 💕</span>
+      </button>
+    </div>
+    <p class="small">
+      If a photo doesn't appear, check that the filename and capitalization
+      match the file in your GitHub media folder.
+    </p>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="page"
+    style="--page-photo:url('media/diksha-2.jpeg')">
+    <div class="eyebrow">A little game for you</div>
+    <h2>Our Love Quiz 💗</h2>
+    <p>Answer these cute questions and see your score!</p>
+
+    <div class="glass">
+      <div id="quizCounter">Question 1 of 5</div>
+      <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+      <div id="quizQuestion" class="quiz-question"></div>
+      <div id="quizAnswers" class="answers"></div>
+      <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+      <div id="quizResult" aria-live="polite"></div>
+      <button id="nextQuestion" class="btn" hidden>Next Question ➜</button>
+      <button id="restartQuiz" class="btn secondary" hidden>Play Again 💕</button>
+    </div>
+    <p class="small">
+      This is a playful quiz, not a test. Every answer is a chance to smile!
+    </p>
+  </section>
+
+  <!-- KARWA CHAUTH -->
+  <section id="karwa" class="page"
+    style="--page-photo:url('media/diksha-3.jpeg')">
+    <div class="eyebrow">A special wish for you</div>
+    <h2>Happy Karwa Chauth, Meri Jaan 🌙</h2>
+    <div class="glass">
+      <p>
+        May your life always be filled with love, happiness, peace
+        and beautiful moments.
+      </p>
+      <p>
+        Diksha, I hope every moonlit night reminds you that somewhere
+        there is a Mohit wishing the very best for you. ❤️
+      </p>
+      <p><strong>With love, Mohit 💖</strong></p>
+    </div>
+    <button class="btn" data-go="home">Back to Our Little World 🏡</button>
+  </section>
+</main>
+
+<footer>
+  Made with ❤️ by Mohit, especially for Diksha — Meri Jaan.
+</footer>
+
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <button class="active" data-page="home"><span>🏠</span>Home</button>
+  <button data-page="story"><span>💞</span>Story</button>
+  <button data-page="letter"><span>💌</span>Letter</button>
+  <button data-page="photos"><span>📸</span>Photos</button>
+  <button data-page="quiz"><span>💗</span>Quiz</button>
+  <button data-page="karwa"><span>🌙</span>Karwa</button>
+</nav>
+
+<div id="photoModal" role="dialog" aria-modal="true"
+  aria-label="Full screen photo viewer">
+  <button class="modal-close" id="closeModal" aria-label="Close photo">×</button>
+  <img id="modalImage" src="" alt="Full size photo of Diksha">
+</div>
+
 <script>
-const pages=['home','story','photos','game','karwa'];
-function showPage(id){pages.forEach(p=>document.getElementById(p).classList.toggle('active',p===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});}
-document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
-function openPhoto(src){document.getElementById('largePhoto').src=src;document.getElementById('modal').classList.add('show')}
-function closePhoto(){document.getElementById('modal').classList.remove('show')}
-const qs=[
-{q:"What sweet nickname does Mohit call you?",a:["Meri Jaan ❤️","Captain Cool","Professor","Boss Lady"],correct:0,why:"Of course — you are Mohit's Meri Jaan! 💗"},
-{q:"What makes a relationship feel strongest?",a:["Honesty and care","Never talking","Always being right","Keeping secrets"],correct:0,why:"Love grows with honesty, care, and listening. 💞"},
-{q:"What is the best kind of surprise?",a:["A thoughtful message","Ignoring each other","A forgotten birthday","No time together"],correct:0,why:"Little thoughtful moments can mean so much. 💌"},
-{q:"If we have a difficult day, what should we do?",a:["Talk kindly and listen","Stop communicating","Blame each other","Pretend nothing matters"],correct:0,why:"We can face things better as a team. 🤝❤️"},
-{q:"What does Mohit want you to remember?",a:["You are special to me","You must be perfect","You never make mistakes","You should guess"],correct:0,why:"You are special just as you are, Diksha. Love, Mohit ❤️"}
+/* PAGE NAVIGATION */
+function showPage(pageId, updateHistory = true) {
+  const target = document.getElementById(pageId);
+  if (!target) return;
+
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.toggle("active", page.id === pageId);
+  });
+
+  document.querySelectorAll("[data-page]").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === pageId);
+  });
+
+  if (updateHistory) {
+    history.pushState({ page: pageId }, "", "#" + pageId);
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.go));
+});
+
+window.addEventListener("popstate", () => {
+  const pageId = location.hash.slice(1) || "home";
+  showPage(pageId, false);
+});
+
+const initialPage = location.hash.slice(1);
+if (document.getElementById(initialPage)) {
+  showPage(initialPage, false);
+}
+
+/* LOVE LETTER SURPRISE */
+document.getElementById("surpriseButton").addEventListener("click", () => {
+  const message = document.getElementById("surpriseMessage");
+  message.textContent =
+    "Diksha, no matter how many times you read this, remember: you are special to me. I hope this made you smile! ❤️🌷";
+});
+
+/* PHOTO VIEWER */
+const modal = document.getElementById("photoModal");
+const modalImage = document.getElementById("modalImage");
+
+document.querySelectorAll("[data-photo]").forEach(button => {
+  button.addEventListener("click", () => {
+    modalImage.src = button.dataset.photo;
+    modal.classList.add("open");
+  });
+});
+
+function closePhoto() {
+  modal.classList.remove("open");
+  modalImage.src = "";
+}
+
+document.getElementById("closeModal").addEventListener("click", closePhoto);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) closePhoto();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePhoto();
+});
+
+/* LOVE QUIZ */
+const questions = [
+  {
+    q: "What makes a relationship beautiful?",
+    a: ["Trust, care and understanding", "Only expensive gifts", "Never talking"],
+    correct: 0,
+    feedback: "Yes! Trust, care and understanding make love stronger. 💗"
+  },
+  {
+    q: "What is a sweet way to make someone smile?",
+    a: ["Ignore them", "Give a thoughtful message", "Argue all day"],
+    correct: 1,
+    feedback: "Exactly! A small thoughtful message can brighten a day. 💌"
+  },
+  {
+    q: "What should people do after a misunderstanding?",
+    a: ["Listen and talk honestly", "Never listen", "Stay angry forever"],
+    correct: 0,
+    feedback: "Right! Listening helps people understand each other. 🌷"
+  },
+  {
+    q: "Which matters most in a loving relationship?",
+    a: ["Respect and kindness", "Being perfect", "Winning every argument"],
+    correct: 0,
+    feedback: "Beautiful answer! Respect and kindness matter every day. ❤️"
+  },
+  {
+    q: "What do I hope this little website gives you?",
+    a: ["A reason to smile", "More homework", "A difficult exam"],
+    correct: 0,
+    feedback: "That's the idea, Meri Jaan! I hope you are smiling. 🥰"
+  }
 ];
-let qi=0,score=0,answered=false;
-function renderQ(){let q=qs[qi];document.getElementById('question').textContent=q.q;document.getElementById('counter').textContent=`Question ${qi+1} of ${qs.length}`;document.getElementById('bar').style.width=(qi/qs.length*100)+'%';document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('restart').style.display='none';answered=false;let box=document.getElementById('answers');box.innerHTML='';q.a.forEach((a,i)=>{let b=document.createElement('button');b.textContent=a;b.onclick=()=>answer(i);box.appendChild(b)})}
-function answer(i){if(answered)return;answered=true;let q=qs[qi];if(i===q.correct)score++;document.querySelectorAll('#answers button').forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.style.background='#c13e76'});document.getElementById('feedback').textContent=(i===q.correct?'Correct! 💖 ':'A sweet thought: ')+q.why;document.getElementById('bar').style.width=((qi+1)/qs.length*100)+'%';if(qi<qs.length-1)document.getElementById('next').style.display='inline-block';else{document.getElementById('question').textContent='You finished our love quiz! 💗';document.getElementById('counter').textContent=`You got ${score} of ${qs.length} sweet answers`;document.getElementById('restart').style.display='inline-block';document.getElementById('next').style.display='none'}}
-function nextQuestion(){if(qi<qs.length-1){qi++;renderQ()}}
-function restartQuiz(){qi=0;score=0;renderQ()}
-renderQ();
-if(location.hash&&pages.includes(location.hash.slice(1)))showPage(location.hash.slice(1));
-</script></body></html>
+
+let questionIndex = 0;
+let score = 0;
+let answered = false;
+
+const questionEl = document.getElementById("quizQuestion");
+const answersEl = document.getElementById("quizAnswers");
+const counterEl = document.getElementById("quizCounter");
+const feedbackEl = document.getElementById("quizFeedback");
+const resultEl = document.getElementById("quizResult");
+const progressBar = document.getElementById("progressBar");
+const nextButton = document.getElementById("nextQuestion");
+const restartButton = document.getElementById("restartQuiz");
+
+function renderQuestion() {
+  answered = false;
+  const item = questions[questionIndex];
+
+  counterEl.textContent =
+    "Question " + (questionIndex + 1) + " of " + questions.length;
+
+  progressBar.style.width =
+    (questionIndex / questions.length * 100) + "%";
+
+  questionEl.textContent = item.q;
+  answersEl.innerHTML = "";
+  feedbackEl.textContent = "";
+  resultEl.textContent = "";
+  nextButton.hidden = true;
+  restartButton.hidden = true;
+
+  item.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.addEventListener("click", () => {
+      if (answered) return;
+      answered = true;
+
+      if (index === item.correct) {
+        score++;
+        feedbackEl.textContent = "Correct! 💖 " + item.feedback;
+      } else {
+        feedbackEl.textContent = "Nice try! 💕 " + item.feedback;
+      }
+
+      answersEl.querySelectorAll("button").forEach((option, i) => {
+        option.disabled = true;
+        if (i === item.correct) {
+          option.style.borderColor = "#ff9fc3";
+          option.style.background = "rgba(255,107,157,.25)";
+        }
+      });
+
+      progressBar.style.width =
+        ((questionIndex + 1) / questions.length * 100) + "%";
+
+      if (questionIndex < questions.length - 1) {
+        nextButton.hidden = false;
+      } else {
+        showResult();
+      }
+    });
+
+    answersEl.appendChild(button);
+  });
+}
+
+function showResult() {
+  questionEl.textContent = "You completed the Love Quiz! 💗";
+  counterEl.textContent = "Quiz completed";
+  answersEl.innerHTML = "";
+  nextButton.hidden = true;
+  restartButton.hidden = false;
+
+  resultEl.textContent =
+    "Your score: " + score + " / " + questions.length +
+    ". Thank you for playing, Diksha! Sending you a big virtual hug. ❤️";
+}
+
+nextButton.addEventListener("click", () => {
+  if (questionIndex < questions.length - 1) {
+    questionIndex++;
+    renderQuestion();
+  }
+});
+
+restartButton.addEventListener("click", () => {
+  questionIndex = 0;
+  score = 0;
+  renderQuestion();
+});
+
+renderQuestion();
+
+/* FLOATING HEARTS */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart-float";
+  heart.textContent = ["❤️", "💕", "💗", "💖"][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (7 + Math.random() * 5) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 12000);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  setInterval(createHeart, 1800);
+}
+</script>
+</body>
+</html>
